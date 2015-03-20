@@ -1,3 +1,59 @@
+#Load UPS Data
+ups.path <- "https://github.com/sungjin712/sungjin712/blob/master/431/dataset/"
+ups.data.file <- "df.431.csv"
+missing.types <- c("NA", "")
+ups.col.types <- c('numeric', #Vehicle_size
+                   'factor', #OGZ_NR
+                   'character', #RTE_NR
+                   'Date', #Date
+                   'numeric', #RTE_Miles
+                   'factor', #VEH_NR
+                   'numeric', #Total_Vol
+                   'numeric', #Total_Stop
+                   'character', #Car_Group
+                   'character', #Make
+                   'character', #Model
+                   'character', #Fuel
+                   'character', #Engine_Type
+                   'numeric', #MilesRun
+                   'numeric', #Fuel_Used
+                   'interger') #MPG
+
+
+
+#Data Munging
+#Draw the missing data
+missmap(ups.raw, main="Ups_raw - Missings Map", 
+        col=c("yellow", "black"), legend=FALSE)
+
+return(print('Big'))
+
+#ups.raw / ups.name
+
+ups.raw <- na.omit(ups.raw) (Remove data)
+
+
+duplicated(ups.raw$VEH_NR)
+a <- ups.raw$VEH_NR[!duplicated(ups.raw$VEH_NR)]
+
+
+ups.name
+
+
+
+
+
+
+  #else if 500 <= size < 1000 {
+  #  return(print('Med'))
+  #}
+  else size < 500 {
+    return(print('Small'))
+  }
+}
+
+
+
 #Save as Excel Type
 #testPerl(perl = "perl", verbose = TRUE)
 #WriteXLS("df_total", "df_total.xls")
@@ -13,9 +69,7 @@ ls(ups.raw)
 #[9] "MPG"          "OGZ_NR"       "RTE_Miles"    "RTE_NR"      
 #[13] "Total_Stop"   "Total_Vol"    "VEH_NR"       "Vehicle_size"
 
-#Draw the missing data
-missmap(ups.raw, main="Ups_raw - Missings Map", 
-        col=c("yellow", "black"), legend=FALSE)
+
 
 df.ups <- data.frame(ups.raw) #Convert data frame
 #create new table and omit all values NA

@@ -1,5 +1,5 @@
-#Rename Table
-#rename table mytable to mpg_report;
+#drop table pkg_info2;
+RENAME TABLE mytable TO pkg_info3;
 #RENAME TABLE mytable TO pkg_info;
 #RENAME TABLE mytable TO vehicle_center;
 RENAME TABLE mytable TO ups_summary;
@@ -61,5 +61,16 @@ DELETE FROM ups_summary WHERE Vehicle_size IS NULL;
 SELECT * FROM ups_summary GROUP BY VEH_NR;
 
 
+SELECT * FROM pkg_info2;
 
+#Remove all null values for VOl
+DELETE FROM pkg_info2 WHERE
+ (Del_Vol IS NULL OR Del_Vol = '') & (PU_Vol IS NULL OR PU_Vol = '');
+#Remove all null values for ..
+DELETE FROM pkg_info2 WHERE
+ (Miles IS NULL OR Miles = '');
 
+SELECT * FROM pkg_info3;
+
+SELECT DATE, Uni_id, AVG(Del_Vol), AVG(PU_Vol), AVG(Miles)
+ FROM pkg_info3 GROUP BY Uni_id;
